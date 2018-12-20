@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9" style="padding: 0px;">
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+    <div class="col-md-3">
+      <br>
+      <h4>Lugares</h4> <a routerLink="/crear-lugar">Crear negocio</a>
+      <hr>
+      <ul>
+        <ng-container *ngFor="let lugar of lugares">
+          <li><a routerLink="/detalle/{{ lugar.id }}">{{ lugar.name }} - {{ lugar.plan }}</a></li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>

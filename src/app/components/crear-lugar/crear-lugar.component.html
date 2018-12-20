@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      
+        <div class="form-group">
+          <label for="">Nombre del lugar</label>
+          <input type="text" [(ngModel)]="lugar.name" class="form-control">
+        </div>
+        <div class="form-group"> 
+          <label for="">Distancia</label>
+          <input type="number" [(ngModel)]="lugar.distancia" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Cercania</label>
+          <input type="number" class="form-control" [(ngModel)]="lugar.cercania">
+        </div>
+        <div class="form-group">
+          <label for="">Descripción</label>
+          <textarea name="" id="" class="form-control" [(ngModel)]="lugar.description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="">Plan</label>
+          <input type="text" [(ngModel)]="lugar.plan" class="form-control">
+        </div>
+        <div class="form-group">
+          <a (click)="guardarLugar()" class="btn btn-primary">Guardar</a>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+      
+    </div>
+  </div>
+</div>
