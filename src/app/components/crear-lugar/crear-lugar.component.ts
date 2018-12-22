@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { LugaresServices } from 'src/app/services/lugares/lugares.services';
 
 @Component({
@@ -17,6 +17,15 @@ export class CrearLugarComponent implements OnInit {
 
 
   guardarLugar(){
-    this.lugaresServices.guardarLugar(this.lugar)
+    var direccion = this.lugar.address + ',' + this.lugar.city + ',' + this.lugar.country
+    this.lugaresServices.obtenerGeoData(direccion).subscribe(geoData => { 
+        console.log(geoData)
+        this.lugar.lat = 0
+        this.lugar.lng = 0
+        this.lugar.id = Date.now();
+        this.lugaresServices.guardarLugar(this.lugar)
+        this.lugar = {};
+      })
+    
   }
 }

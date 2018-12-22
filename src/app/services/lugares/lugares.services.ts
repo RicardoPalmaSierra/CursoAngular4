@@ -1,32 +1,34 @@
 import { Injectable } from '@angular/core'
 import { AngularFireDatabase } from 'angularfire2/database';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 
 export class LugaresServices{
-  lugares: any =[
-    { id: 1, name: 'Hotel Da prieto', description: 'Hotel 24 horas' , plan: 'Págo', estado: 'activo'},
-    { id: 2, name: 'Hotel Estelar', description: 'Hotel ', plan: 'Gratis', estado: 'activo'},
-    { id: 3, name: 'Colegio Antina', description: 'Enseñar es un arte', plan: 'Págo', estado: 'activo' },
-    { id: 4, name: 'Otro colegio', description: 'Otra descripción', plan: 'Págo', estado: 'activo' }
-  ]
+ 
 
-  constructor(private afDB: AngularFireDatabase){
-
+  constructor(private afDB: AngularFireDatabase, private http: HttpClient){
+    
   }
 
   public getLugares(){
-    return this.lugares;
+    return this.afDB.list('lugares')
   }
 
   public getLugar(id){
-    return this.lugares.filter((lugar) => { 
-      return lugar.id == id
-    })[0] || null
+    
   }
 
   public guardarLugar(lugar){
-    // console.log("desde servicio", lugar)
-    this.afDB.database.ref("lugares").push(lugar);
+    // console.log(lugar)
+    this.afDB.database.ref("lugares/"+ lugar.id).set(lugar)
+  }
+
+  public obtenerGeoData(direccion){
+    //http://maps.google.com/maps/api/geocode/json?address=9-55+calle+72,+Bogota,Colombia
+    // https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+ direccion + '&key=AIzaSyBbjnLPRHZ-nOJIupsE0VjRa4hVN_VxVtM')
+    
+
   }
 }

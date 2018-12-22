@@ -15,7 +15,9 @@ export class LugarComponent implements OnInit {
   lugares =  null;
 
   constructor(private lugaresServices: LugaresServices) { 
-    this.lugares = lugaresServices.getLugares();
+    lugaresServices.getLugares().valueChanges().subscribe(lugares => {
+      this.lugares = lugares
+    })
   }
 
   ngOnInit() {

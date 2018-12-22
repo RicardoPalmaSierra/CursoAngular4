@@ -17,6 +17,7 @@ import { LugarComponent } from './components/lugar/lugar.component';
 import { DetalleComponent } from './components/detalle/detalle.component';
 import { LugaresServices } from './services/lugares/lugares.services';
 import { CrearLugarComponent } from './components/crear-lugar/crear-lugar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 export const firebaseConfig = {
@@ -39,9 +40,10 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAamfHaxmfgBzSziQ5QU1D-KkcZUIQYbcM'
+      apiKey: 'AIzaSyBbjnLPRHZ-nOJIupsE0VjRa4hVN_VxVtM'
     }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,

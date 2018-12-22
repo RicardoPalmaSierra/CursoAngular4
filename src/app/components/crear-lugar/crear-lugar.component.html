@@ -23,6 +23,18 @@
           <input type="text" [(ngModel)]="lugar.plan" class="form-control">
         </div>
         <div class="form-group">
+          <label for="">Dirección</label>
+          <input type="text" name="" id="" class="form-control" [(ngModel)]="lugar.address">
+        </div>
+        <div class="form-group">
+          <label for="">Ciudad</label>
+          <input type="text" name="" id="" class="form-control" [(ngModel)]="lugar.city">
+        </div>
+        <div class="form-group">
+          <label for="">País</label>
+          <input type="text" name="" id="" class="form-control" [(ngModel)]="lugar.country">
+        </div>
+        <div class="form-group">
           <a (click)="guardarLugar()" class="btn btn-primary">Guardar</a>
         </div>
 
@@ -30,5 +42,8 @@
     <div class="col-md-6">
       
     </div>
+  </div>
+  <div id="message">
+    <h6>&#10004; Lugar registrado exitosamente</h6>
   </div>
 </div>
