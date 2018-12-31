@@ -16,7 +16,7 @@ export class LugaresServices{
   }
 
   public getLugar(id){
-    
+    return this.afDB.object("lugares/" + id);
   }
 
   public guardarLugar(lugar){
@@ -27,7 +27,7 @@ export class LugaresServices{
   public obtenerGeoData(direccion){
     //http://maps.google.com/maps/api/geocode/json?address=9-55+calle+72,+Bogota,Colombia
     // https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+ direccion + '&key=AIzaSyBbjnLPRHZ-nOJIupsE0VjRa4hVN_VxVtM')
+    return this.http.get('https://us1.locationiq.com/v1/search.php?key=8ac6e07057b098&q=' + direccion + '&format=json')
     
 
   }

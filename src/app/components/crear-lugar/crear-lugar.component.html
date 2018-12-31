@@ -36,6 +36,7 @@
         </div>
         <div class="form-group">
           <a (click)="guardarLugar()" class="btn btn-primary">Guardar</a>
+          <a (click)="animarMensaje()" class="btn btn-primary">Animar</a>
         </div>
 
     </div>
@@ -43,7 +44,7 @@
       
     </div>
   </div>
-  <div id="message">
+  <div id="message" [@message]=estadoMessage >
     <h6>&#10004; Lugar registrado exitosamente</h6>
   </div>
 </div>

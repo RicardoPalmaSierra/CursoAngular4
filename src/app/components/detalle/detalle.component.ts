@@ -13,7 +13,10 @@ export class DetalleComponent implements OnInit {
   lugar: any;
   constructor(private data: ActivatedRoute, private lugaresServices: LugaresServices) {
     this.id = this.data.snapshot.params['id']
-    this.lugar = lugaresServices.getLugar(this.id)
+    this.lugaresServices.getLugar(this.id)
+      .valueChanges().subscribe((data)=>{
+        this.lugar = data
+      })
   }
 
 

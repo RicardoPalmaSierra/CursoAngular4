@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Login</h5>
+          <hr>
+          <div class="form-group">
+              <label for="">User</label>
+              <input type="email" class="form-control" [(ngModel)]="user.email">
+          </div>
+          <div class="form-group">
+              <label for="">Password</label>
+              <input type="password" class="form-control" [(ngModel)]="user.password">
+          </div>
+          <hr>
+          <a (click)="login()" class="btn btn-primary btn-block">Iniciar</a>
+          <a routerLink="/registrar" class="btn btn-default btn-block">Registrar</a>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

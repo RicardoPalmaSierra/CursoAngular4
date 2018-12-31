@@ -2,16 +2,22 @@
   <div class="row">
     <div class="col-md-9" style="padding: 0px;">
       <agm-map [latitude]="lat" [longitude]="lng">
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"></agm-marker>
       </agm-map>
     </div>
     <div class="col-md-3">
       <br>
-      <h4>Lugares</h4> <a routerLink="/crear-lugar">Crear negocio</a>
+      <h4>Lugares</h4> <a routerLink="/crear-lugar" *ngIf="loggedIn">Crear negocio</a>
       <hr>
-      <ul>
+      <ul class="list-places">
         <ng-container *ngFor="let lugar of lugares">
-          <li><a routerLink="/detalle/{{ lugar.id }}">{{ lugar.name }} - {{ lugar.plan }}</a></li>
+          <li>
+            <a routerLink="/detalle/{{ lugar.id }}">{{ lugar.name }} </a>
+            <br>
+            <small>Creado: {{ lugar.id | date:'dd/MM/yyyy' }}</small>
+            <br>
+            <small [innerHtml]="lugar.description | linkifystr"></small>
+          </li>
         </ng-container>
       </ul>
     </div>

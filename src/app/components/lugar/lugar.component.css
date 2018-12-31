@@ -1,3 +1,15 @@
 agm-map {
   height: 75vh;
 }
+.list-places li{
+  /* border: 1px solid blue; */
+  border-radius: 5px ;
+  padding: 5px 10px;
+  margin-top: 10px;
+  list-style: none;
+  box-shadow: 0px 0px 4px #c4c4c4;
+}
+
+.list-places{
+  padding-left: 0px;
+}

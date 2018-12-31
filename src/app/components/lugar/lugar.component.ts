@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LugaresServices } from 'src/app/services/lugares/lugares.services';
+import { AuthenticationServices } from 'src/app/services/Auth/authentication.services';
 
 
 @Component({
@@ -9,15 +10,26 @@ import { LugaresServices } from 'src/app/services/lugares/lugares.services';
 })
 export class LugarComponent implements OnInit {
 
-  lat: number = 10.9059769;
-  lng: number = -74.7863697;
+  loggedIn = false;
 
   lugares =  null;
 
-  constructor(private lugaresServices: LugaresServices) { 
+  constructor(private lugaresServices: LugaresServices, private AuthServices: AuthenticationServices) { 
     lugaresServices.getLugares().valueChanges().subscribe(lugares => {
       this.lugares = lugares
     })
+
+    AuthServices.isLogged()
+      .subscribe((result)=>{
+        if(result && result.uid){
+          this.loggedIn= true;
+        }else{
+          this.loggedIn = false;
+        }
+      },(err) => {
+        console.log(err);
+        this.loggedIn = false;
+      })
   }
 
   ngOnInit() {

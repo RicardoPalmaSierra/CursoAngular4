@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Google Maps
 import { AgmCoreModule } from '@agm/core';
@@ -18,10 +19,15 @@ import { DetalleComponent } from './components/detalle/detalle.component';
 import { LugaresServices } from './services/lugares/lugares.services';
 import { CrearLugarComponent } from './components/crear-lugar/crear-lugar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LinkifystrPipe } from './pipes/linkify.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { AuthenticationServices } from './services/Auth/authentication.services';
+import { Guard } from './services/Guard/guard.services';
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBQ-kbju_omiH0sl5nSoUsgTv9eD_MjYWc",
+  apiKey: "AIzaSyBbjnLPRHZ-nOJIupsE0VjRa4hVN_VxVtM",
   authDomain: "curso-angular-4-fb03c.firebaseapp.com",
   databaseURL: "https://curso-angular-4-fb03c.firebaseio.com",
   storageBucket: "curso-angular-4-fb03c.appspot.com",
@@ -35,7 +41,10 @@ export const firebaseConfig = {
     HomeComponent,
     LugarComponent,
     DetalleComponent,
-    CrearLugarComponent
+    CrearLugarComponent,
+    LinkifystrPipe,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +56,10 @@ export const firebaseConfig = {
     }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule
   ],
-  providers: [LugaresServices],
+  providers: [LugaresServices, AuthenticationServices, Guard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
