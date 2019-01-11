@@ -1,0 +1,8 @@
+.banner{
+  height: 70vh;
+}
+
+.banner h1{
+  position: relative;
+  top: 30px;
+}

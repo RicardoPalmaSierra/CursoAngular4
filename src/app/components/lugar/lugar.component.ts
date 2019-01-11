@@ -10,6 +10,12 @@ import { AuthenticationServices } from 'src/app/services/Auth/authentication.ser
 })
 export class LugarComponent implements OnInit {
 
+  
+  page: number = 1
+  totalPages: number;
+  numShops: number
+
+
   loggedIn = false;
 
   lugares =  null;
